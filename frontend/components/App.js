@@ -27,6 +27,19 @@ export default class App extends React.Component {
     })
   }
 
+  completeTask = evt => {
+    const index = this.state.todo.findIndex(this.state.todo.id === evt.target.id)
+    const taskList = [...this.state.todo]
+    const task = {...taskList[index]}
+
+    task.completed = !task.completed
+    taskList[index] = task;
+    
+    this.setState({
+      ...this.state, todo: taskList
+    })
+  }
+
   render() {
     return (
       <div>
